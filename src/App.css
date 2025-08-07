@@ -46,8 +46,20 @@
   
   .but2:hover {background-color: #f04d4d}
   
+  
   .but2:active {
     background-color: #ed4c36;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+
+  .postcard-hover {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .postcard-hover:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+

@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-import conf from './conf/conf'
 import './App.css'
 import {useDispatch} from 'react-redux'
 import { useState,useEffect } from 'react';
@@ -9,34 +7,35 @@ import { Header , Footer   } from './components/index.js';
 import { Outlet } from 'react-router-dom';
 
 function App() {
-  
-  const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
-  useEffect(() =>{
-      authService.getCurrentUser()
-      .then((userData) =>{
+  useEffect(() => {
+    authService
+      .getCurrentUser()
+      .then((userData) => {
         if (userData) {
-          dispatch(login({userData}))
+          dispatch(login({ userData }));
         } else {
-          dispatch(logout())
+          dispatch(logout());
         }
       })
-      .finally(() =>{ setLoading(false)});
-  },[dispatch])
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [dispatch]);
 
-
-            
-
-   return !loading ?  <div className='min-h-screen flex flex-wrap content-between bg-gray-400 text-center'> 
-   <div className='w-full block' >
-      <Header/>
+  return !loading ? (
+    <div className="min-h-screen flex flex-wrap content-between text-center">
+      <div className="w-full block">
+        <Header />
         <main>
-          <Outlet/>
+          <Outlet />
         </main>
-      <Footer/>
-   </div>
-   </div> :(null) ;
+        <Footer />
+      </div>
+    </div>
+  ) : null;
 }
 
 export default App
